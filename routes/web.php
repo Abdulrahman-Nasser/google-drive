@@ -30,7 +30,7 @@ Route::get('/allfile', [DriveController::class, 'allFile'])->name('drive.allFile
 
 
 
-Route::middleware(['auth' , 'verified'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::prefix("drives")->group(function () {
         ///////////////// method get/////////////
 
@@ -38,7 +38,7 @@ Route::middleware(['auth' , 'verified'])->group(function () {
         Route::get('index', [DriveController::class, 'index'])->name('drive.index');
         // create file route
         Route::get('create', [DriveController::class, 'create'])->name('drive.create');
-        //show file details 
+        //show file details
         Route::get('show/{id}', [DriveController::class, 'show'])->name('drives.show');
         // Edit file Route
         Route::get('edit/{id}', [DriveController::class, 'edit'])->name('drives.edit');
@@ -50,7 +50,7 @@ Route::middleware(['auth' , 'verified'])->group(function () {
         Route::get('shared', [DriveController::class, 'shared'])->name('drives.shared');
         // share file to public
         Route::get('share/{id}', [DriveController::class, 'share'])->name('drives.share');
-        // public files 
+        // public files
         Route::get('publicFile/{id}', [DriveController::class, 'showSharedFile'])->name('drives.publicFile');
         // 401 error
         Route::get('401', [HomeController::class, 'goto401'])->name('goto401');
